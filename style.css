@@ -15,13 +15,18 @@
 }
 
 .light {
-    --text-color: black; /* Texto preto para o modo claro */
-    --bg-url: url(./assets/bg-mobile-light.jpg); /* Imagem de fundo clara */
-    --stroke-color: rgba(0, 0, 0, 0.5); /* Cor da borda cinza */
-    --surface-color: rgba(255, 255, 255, 0.05); /* Cor da superfície clara */
-    --surface-color-hover: rgba(255, 255, 255, 0.2); /* Cor da superfície um pouco mais clara ao passar o mouse */
-    --highlight-color: rgba(0, 0, 0, 0.1); /* Cor de destaque cinza */
-    --switch-bg-url: url(./assets/sun.svg); /* Imagem de fundo do botão clara */
+  --text-color: black; /* Texto preto para o modo claro */
+  --bg-url: url(./assets/bg-mobile-light.jpg); /* Imagem de fundo clara */
+  --stroke-color: rgba(0, 0, 0, 0.5); /* Cor da borda cinza */
+  --surface-color: rgba(255, 255, 255, 0.05); /* Cor da superfície clara */
+  --surface-color-hover: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Cor da superfície um pouco mais clara ao passar o mouse */
+  --highlight-color: rgba(0, 0, 0, 0.1); /* Cor de destaque cinza */
+  --switch-bg-url: url(./assets/sun.svg); /* Imagem de fundo do botão clara */
 }
 
 body {
@@ -39,7 +44,6 @@ body * {
   max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px;
-  
 }
 
 /* profile */
@@ -65,7 +69,6 @@ body * {
   width: 64px;
 
   margin: 4px auto;
-  
 }
 
 #switch button {
@@ -79,13 +82,17 @@ body * {
   top: 50%;
   left: 0;
   z-index: 1;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.2s forwards;
+}
 
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -101,7 +108,7 @@ body * {
 
 ul {
   list-style: none;
-  
+
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -175,5 +182,24 @@ footer {
 
   .light {
     --bg-url: url(./assets/assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
